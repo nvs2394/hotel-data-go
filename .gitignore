@@ -1,0 +1,59 @@
+# Binaries for programs and plugins
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Output directories
+bin/
+out/
+build/
+
+# Build artifacts
+*.a
+*.o
+
+# Go vendor directory (if not using Go modules)
+vendor/
+
+# Dependency directories (for dependency managers like dep or glide)
+Godeps/
+Gopkg.lock
+Gopkg.toml
+
+# If you're using Go modules (mod files)
+go.sum
+
+# Editor and IDE files
+*.swp
+*~
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Logs and temp files
+*.log
+*.tmp
+
+# Coverage files
+*.coverprofile
+*.cov
+
+# Test binaries
+*.test
+
+# Code editor directories
+.DS_Store
+
+# GoLand IDE project folder
+.idea/
+
+# IntelliJ / GoLand / VSCode specific settings
+.vscode/
+*.iml
+
+# Other miscellaneous files
+*.bak
+*.old
+data/

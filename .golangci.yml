@@ -1,0 +1,27 @@
+# .golangci.yml
+run:
+  timeout: 5m
+
+linters:
+  enable:
+    - unused          # Replaces deadcode, structcheck, and varcheck
+    - govet           # Checks for suspicious constructs
+    - staticcheck     # Detects bugs, inefficiencies, and code simplifications
+    - errcheck        # Ensures error return values are checked
+    - gosimple        # Suggests simpler code constructs
+    - gofmt           # Ensures proper Go code formatting
+    - gosec           # Identifies security weaknesses
+    - misspell        # Detects common spelling errors
+
+issues:
+  exclude-rules:
+    - path: _test.go  # Optionally exclude test files from errcheck
+      linters:
+        - errcheck
+
+linters-settings:
+  gofmt:
+    simplify: true    # Apply gofmt's -s flag for code simplification
+
+  misspell:
+    locale: US        # Use US English for spell checking

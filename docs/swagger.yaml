@@ -1,0 +1,77 @@
+definitions:
+  models.Hotel:
+    properties:
+      address:
+        type: string
+      city:
+        type: string
+      country:
+        type: string
+      created_at:
+        type: string
+      description:
+        type: string
+      email:
+        type: string
+      id:
+        type: integer
+      latitude:
+        type: number
+      longitude:
+        type: number
+      name:
+        type: string
+      phone_number:
+        type: string
+      postal_code:
+        type: string
+      rating:
+        type: number
+      state:
+        type: string
+      updated_at:
+        type: string
+      website_url:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /hotels:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of hotels filtered by hotel_ids or destination_id
+      parameters:
+      - collectionFormat: csv
+        description: List of hotel IDs to filter by
+        in: query
+        items:
+          type: integer
+        name: hotel_ids
+        type: array
+      - description: Address to filter by
+        in: query
+        name: address
+        type: string
+      - description: City to filter by
+        in: query
+        name: city
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Hotel'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            type: "500"
+      summary: Get list of hotels
+      tags:
+      - hotels
+swagger: "2.0"
