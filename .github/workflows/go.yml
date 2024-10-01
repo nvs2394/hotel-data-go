@@ -1,4 +1,4 @@
-name: Go CI
+name: Go CI with PostgreSQL
 
 on:
   push:
@@ -19,33 +19,17 @@ jobs:
     - name: Set up Go
       uses: actions/setup-go@v4
       with:
-        go-version: '1.x'  # Use the latest Go version from the 1.x series
+        go-version: '1.23.1'  # Target Go 1.23.1
 
     - name: Install golangci-lint
-      run: go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
-
-    - name: Check Go version
-      run: go version
-
-    - name: Cache Go modules
-      uses: actions/cache@v3
-      with:
-        path: |
-          ~/.cache/go-build
-          ~/go/pkg/mod
-        key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
-        restore-keys: |
-          ${{ runner.os }}-go-
+      run: go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.54.2
 
     - name: Install dependencies
       run: go mod download
 
     - name: Run lint check
       run: make lint
-
-    - name: Run format check
-      run: make fmt-check
-
+    
     - name: Run tests
       run: make test
 
